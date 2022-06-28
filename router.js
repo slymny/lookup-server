@@ -1,6 +1,9 @@
-import express, {Router} from 'express';
-import axios from 'axios';
-import 'dotenv/config';
+// import express, {Router} from 'express';
+const {Router} = require('express');
+// import axios from 'axios';
+const axios = require('axios');
+// import 'dotenv/config';
+require('dotenv').config();
 
 let router = Router();
 
@@ -72,4 +75,4 @@ router.get('/forecast/:location', async (req, response) => {
   else response.send(weatherData.data);
 });
 
-export default router;
+module.exports = router;

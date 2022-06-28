@@ -1,12 +1,15 @@
-import express from 'express';
-import router from './router.js';
+// import express from 'express';
+const express = require('express');
+
+// import router from './router.js';
+const router = require('./router.js');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 app.use('/weather/', router);
 

@@ -1,5 +1,5 @@
 {
-  "name": "wa_server",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,6 @@
     "axios": "^0.27.2",
     "express": "^4.18.1"
   },
-  "type": "module",
   "engines": {
     "node": "17.9.0"
   }
