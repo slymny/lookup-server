@@ -4,6 +4,7 @@ const {Router} = require('express');
 const axios = require('axios');
 // import 'dotenv/config';
 require('dotenv').config();
+const countries = require('country-data').countries;
 
 let router = Router();
 
@@ -26,7 +27,7 @@ router.get('/:location', async (req, response) => {
     if (photos.length > 0) {
       image = photos[0].src.landscape;
     } else {
-      photos = await getImage(weatherData.data.sys.country);
+      photos = await getImage(countries[weatherData.data.sys.country].name);
       if (photos.length > 0) {
         image = photos[0].src.landscape;
       } else {
