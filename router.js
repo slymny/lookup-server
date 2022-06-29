@@ -36,6 +36,7 @@ router.get('/:location', async (req, response) => {
     }
   }
 
+
   response.setHeader('Access-Control-Allow-Origin', '*');
   if (error) response.send({error});
   else response.send({data: weatherData.data, image});
@@ -76,4 +77,4 @@ router.get('/forecast/:location', async (req, response) => {
   else response.send(weatherData.data);
 });
 
-module.exports = router;
+module.exports = {router, getImage};
