@@ -1,8 +1,5 @@
-// import express, {Router} from 'express';
 const {Router} = require('express');
-// import axios from 'axios';
 const axios = require('axios');
-// import 'dotenv/config';
 require('dotenv').config();
 const countries = require('country-data').countries;
 
@@ -15,7 +12,7 @@ router.get('/:location', async (req, response) => {
   let error;
 
   try {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.API_KEY_WEATHER}&units=metric`;
+    const url = `${process.env.API_WEATHER_URL}/weather?q=${location}&appid=${process.env.API_KEY_WEATHER}&units=metric`;
     weatherData = await axios(url);
   } catch (err) {
     console.log(err.message);
@@ -36,7 +33,6 @@ router.get('/:location', async (req, response) => {
     }
   }
 
-
   response.setHeader('Access-Control-Allow-Origin', '*');
   if (error) response.send({error});
   else response.send({data: weatherData.data, image});
@@ -45,7 +41,7 @@ router.get('/:location', async (req, response) => {
 async function getImage(query) {
   try {
     const cityImageRes = await axios(
-      `https://api.pexels.com/v1/search?query=${query}`,
+      `${process.env.API_IMAGE_URL}/search?query=${query}`,
       {
         headers: {
           Authorization: process.env.API_KEY_IMAGE,
@@ -65,7 +61,7 @@ router.get('/forecast/:location', async (req, response) => {
   let error;
 
   try {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${process.env.API_KEY_WEATHER}&units=metric`;
+    const url = `${process.env.API_WEATHER_URL}/forecast?q=${location}&appid=${process.env.API_KEY_WEATHER}&units=metric`;
     weatherData = await axios(url);
   } catch (err) {
     console.log(err);

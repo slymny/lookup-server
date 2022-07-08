@@ -1,2 +1,0 @@
-GET http://localhost:5000/forecasts/prague
-Content-Type: application/json

@@ -1,8 +1,5 @@
-// import express from 'express';
 const express = require('express');
 const axios = require('axios');
-
-// import router from './router.js';
 const {router, getImage} = require('./router.js');
 const countries = require('country-data').countries;
 
@@ -30,7 +27,7 @@ app.get('/:location', async (req, response) => {
   let error;
   if (location !== 'undefined') {
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.API_KEY_WEATHER}&units=metric`;
+      const url = `${process.env.API_WEATHER_URL}/weather?q=${location}&appid=${process.env.API_KEY_WEATHER}&units=metric`;
       weatherData = await axios(url);
     } catch (err) {
       console.log(err.message);
